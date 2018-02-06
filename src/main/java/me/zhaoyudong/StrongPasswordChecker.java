@@ -87,7 +87,7 @@ public class StrongPasswordChecker {
             typeCount++;
 
         if (!remove) {
-            return Math.max(modified, Math.max(Math.max(modified, typeCount), count));
+            return Math.max(Math.max(modified, typeCount), count);
         } else {
             return Math.max(modified, typeCount) + cachedCount;
         }
