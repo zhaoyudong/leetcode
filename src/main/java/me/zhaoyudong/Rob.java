@@ -30,4 +30,25 @@ public class Rob {
         return Math.max(a, b);
     }
 
+    public int rob2(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        } else if (nums.length == 1) {
+            return nums[0];
+        } else if (nums.length == 2) {
+            return Math.max(nums[0], nums[1]);
+        }
+
+        int a = nums[0];
+        int b = Math.max(a, nums[1]);
+
+        for (int i = 2; i < nums.length; i++) {
+            int tmp = Math.max(a + nums[i], b);
+            a = b;
+            b = tmp;
+        }
+
+        return b;
+    }
+
 }
