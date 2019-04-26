@@ -19,7 +19,8 @@ public class addTwoNumbers {
         }
         int tmp = 0;
 
-        List<ListNode> nodes = new ArrayList<>();
+        ListNode result = null;
+        ListNode resultHead = null;
 
         while (l1 != null && l2 != null) {
             int val = l1.val + l2.val + tmp;
@@ -29,7 +30,13 @@ public class addTwoNumbers {
             l1 = l1.next;
             l2 = l2.next;
 
-            nodes.add(new ListNode(val));
+            if(result==null){
+                result = new ListNode(val);
+                resultHead = result;
+            }else {
+                result.next = new ListNode(val);
+                result = result.next;
+            }
         }
 
         ListNode remain = l1 == null ? l2 : l1;
@@ -41,18 +48,20 @@ public class addTwoNumbers {
 
             remain = remain.next;
 
-            nodes.add(new ListNode(val));
+            if(result==null){
+                result = new ListNode(val);
+                resultHead = result;
+            }else {
+                result.next = new ListNode(val);
+                result = result.next;
+            }
         }
 
         if (tmp != 0) {
-            nodes.add(new ListNode(tmp));
+            result.next = new ListNode(tmp);
         }
 
-        for (int i = 0; i < nodes.size() - 1; i++) {
-            nodes.get(i).next = nodes.get(i + 1);
-        }
-
-        return nodes.get(0);
+        return resultHead;
     }
 
     public static void main(String[] args) {
